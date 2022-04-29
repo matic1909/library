@@ -78,39 +78,43 @@ function deleteBook(e) {
   renderBooks();
 }
 
+function createBookCard(book) {
+  const cardDiv = document.createElement('div');
+  cardDiv.classList.add('book-card');
+
+  const title = document.createElement('h2');
+  title.textContent = book.title;
+  title.classList.add('title');
+
+  const author = document.createElement('p');
+  author.textContent = book.author;
+  author.classList.add('author');
+
+  const pages = document.createElement('p');
+  pages.textContent = `${book.pages} pages`;
+  pages.classList.add('pages');
+
+  const readStatus = document.createElement('p');
+  readStatus.textContent = `${book.read ? 'read' : 'not read yet'}`;
+  readStatus.classList.add('read');
+
+  const deleteBookButton = document.createElement('button');
+  deleteBookButton.textContent = 'Delete';
+  deleteBookButton.classList.add('btn');
+  deleteBookButton.addEventListener('click', deleteBook);
+
+  cardDiv.appendChild(title);
+  cardDiv.appendChild(author);
+  cardDiv.appendChild(pages);
+  cardDiv.appendChild(readStatus);
+  cardDiv.appendChild(deleteBookButton);
+  libraryDiv.appendChild(cardDiv);
+}
+
 function renderBooks() {
   resetBookDisplay();
   myLibrary.forEach((book) => {
-    const cardDiv = document.createElement('div');
-    cardDiv.classList.add('book-card');
-
-    const title = document.createElement('h2');
-    title.textContent = book.title;
-    title.classList.add('title');
-
-    const author = document.createElement('p');
-    author.textContent = book.author;
-    author.classList.add('author');
-
-    const pages = document.createElement('p');
-    pages.textContent = `${book.pages} pages`;
-    pages.classList.add('pages');
-
-    const readStatus = document.createElement('p');
-    readStatus.textContent = `${book.read ? 'read' : 'not read yet'}`;
-    readStatus.classList.add('read');
-
-    const deleteBookButton = document.createElement('button');
-    deleteBookButton.textContent = 'Delete';
-    deleteBookButton.classList.add('btn');
-    deleteBookButton.addEventListener('click', deleteBook);
-
-    cardDiv.appendChild(title);
-    cardDiv.appendChild(author);
-    cardDiv.appendChild(pages);
-    cardDiv.appendChild(readStatus);
-    cardDiv.appendChild(deleteBookButton);
-    libraryDiv.appendChild(cardDiv);
+    createBookCard(book);
   });
 }
 
