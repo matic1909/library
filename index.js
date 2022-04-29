@@ -71,6 +71,13 @@ function resetBookDisplay() {
   libraryDiv.innerHTML = '';
 }
 
+function deleteBook(e) {
+  const title = e.target.parentNode.firstChild.innerHTML;
+  const filteredLibrary = myLibrary.filter((book) => book.title !== title);
+  myLibrary = filteredLibrary;
+  renderBooks();
+}
+
 function renderBooks() {
   resetBookDisplay();
   myLibrary.forEach((book) => {
@@ -93,10 +100,16 @@ function renderBooks() {
     readStatus.textContent = `${book.read ? 'read' : 'not read yet'}`;
     readStatus.classList.add('read');
 
+    const deleteBookButton = document.createElement('button');
+    deleteBookButton.textContent = 'Delete';
+    deleteBookButton.classList.add('btn');
+    deleteBookButton.addEventListener('click', deleteBook);
+
     cardDiv.appendChild(title);
     cardDiv.appendChild(author);
     cardDiv.appendChild(pages);
     cardDiv.appendChild(readStatus);
+    cardDiv.appendChild(deleteBookButton);
     libraryDiv.appendChild(cardDiv);
   });
 }
