@@ -67,6 +67,10 @@ input[type='number'] {
   font-size: 20px;
 }
 
+.book-card .buttons {
+  display: flex;
+}
+
 #book-display {
   width: 80%;
   margin: 0 auto;

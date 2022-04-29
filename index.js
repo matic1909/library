@@ -55,6 +55,10 @@ function Book(title, author, pages, read) {
   this.read = read;
 }
 
+Book.prototype.toggleRead = function () {
+  this.read = !this.read;
+};
+
 const getBookInput = () => {
   const title = document.getElementById('title').value;
   const author = document.getElementById('author').value;
@@ -72,9 +76,19 @@ function resetBookDisplay() {
 }
 
 function deleteBook(e) {
-  const title = e.target.parentNode.firstChild.innerHTML;
+  const title =
+    e.target.parentNode.parentNode.querySelector('.title').textContent;
   const filteredLibrary = myLibrary.filter((book) => book.title !== title);
   myLibrary = filteredLibrary;
+  renderBooks();
+}
+
+function handleReadToggle(e) {
+  const title =
+    e.target.parentNode.parentNode.querySelector('.title').textContent;
+  myLibrary.forEach((book) => {
+    if (book.title === title) book.toggleRead();
+  });
   renderBooks();
 }
 
@@ -103,11 +117,21 @@ function createBookCard(book) {
   deleteBookButton.classList.add('btn');
   deleteBookButton.addEventListener('click', deleteBook);
 
+  const toggleReadButton = document.createElement('button');
+  toggleReadButton.textContent = `Set as ${book.read ? 'unread' : 'read'}`;
+  toggleReadButton.classList.add('btn');
+  toggleReadButton.addEventListener('click', handleReadToggle);
+
+  const buttonsDiv = document.createElement('div');
+  buttonsDiv.classList.add('buttons');
+  buttonsDiv.appendChild(deleteBookButton);
+  buttonsDiv.appendChild(toggleReadButton);
+
   cardDiv.appendChild(title);
   cardDiv.appendChild(author);
   cardDiv.appendChild(pages);
   cardDiv.appendChild(readStatus);
-  cardDiv.appendChild(deleteBookButton);
+  cardDiv.appendChild(buttonsDiv);
   libraryDiv.appendChild(cardDiv);
 }
 
