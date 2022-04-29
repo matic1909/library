@@ -52,9 +52,26 @@ input[type='number'] {
   transform: translate(-50%, -50%) scale(1);
 }
 
+.book-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 5px;
+  border: 1px solid black;
+  width: 200px;
+}
+
+.book-card .title {
+  font-size: 20px;
+}
+
 #book-display {
+  width: 80%;
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(minmax(300, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 40px;
 }
 

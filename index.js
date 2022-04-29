@@ -1,4 +1,36 @@
-let myLibrary = [];
+let myLibrary = [
+  {
+    title: 'The Fellowship of the Ring',
+    author: 'J.R.R. Tolkien',
+    pages: 459,
+    read: false,
+  },
+  {
+    title: 'The Bible',
+    author: 'J.J.J. Jesus',
+    pages: 1000,
+    read: false,
+  },
+  {
+    title: 'The Greatest Show on Earth',
+    author: 'Richard Dawkins',
+    pages: 309,
+    read: true,
+  },
+  {
+    title: 'Last Chance to See',
+    author: 'Douglas Adams',
+    pages: 378,
+    read: true,
+  },
+  {
+    title: 'It',
+    author: 'Stephen King',
+    pages: 459,
+    read: false,
+  },
+];
+
 const libraryDiv = document.querySelector('#book-display');
 const addBookButton = document.querySelector('#add-book-button');
 const addBookModal = document.querySelector('#add-book-modal');
