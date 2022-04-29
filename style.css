@@ -1,0 +1,70 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+button,
+input {
+  border: none;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  cursor: pointer;
+  outline: none;
+}
+
+input[type='text'],
+input[type='number'] {
+  cursor: text;
+}
+
+/* Utils */
+
+.btn {
+  padding: 10px 15px;
+  cursor: pointer;
+}
+
+.btn:hover {
+  filter: brightness(97%);
+}
+
+/* MODAL */
+
+.modal {
+  position: fixed;
+  z-index: 1;
+  top: 50%;
+  left: 50%;
+  width: 300px;
+  border-radius: 5px;
+  background-color: lightgray;
+  padding: 16px;
+  transform: translate(-50%, -50%) scale(0);
+  transition: 0.2s ease-in-out;
+}
+
+.modal.active {
+  transform: translate(-50%, -50%) scale(1);
+}
+
+#book-display {
+  display: grid;
+  grid-template-columns: repeat(minmax(300, 1fr));
+  gap: 40px;
+}
+
+#add-book-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+#add-book-form button {
+  width: 100%;
+}
