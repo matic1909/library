@@ -1,3 +1,15 @@
+class Book {
+  constructor(title, author, pages, read) {
+    this.title = title;
+    this.author = author;
+    this.pages = pages;
+    this.read = read;
+  }
+
+  toggleRead = () => {
+    this.read = !this.read;
+  };
+}
 let myLibrary = [
   new Book('The Fellowship of the Ring', 'J.R.R. Tolkien', 459, false),
   new Book('The Fellowship of the Rings', 'J.R.R. Tolkien', 459, false),
@@ -28,17 +40,6 @@ submitBookButton.addEventListener('click', (e) => {
   addBookModal.classList.remove('active');
   renderBooks();
 });
-
-function Book(title, author, pages, read) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.read = read;
-}
-
-Book.prototype.toggleRead = function () {
-  this.read = !this.read;
-};
 
 const getBookInput = () => {
   const title = document.getElementById('title').value;
